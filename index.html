@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <!-- Enlace a la hoja de estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Fuente Comic Neue -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Contenedor principal del juego -->
+    <div class="game-container">
+        <h1>Buscaminas</h1>
+        
+        <!-- Sección de controles del juego -->
+        <div class="controls">
+            <!-- Selector de dificultad -->
+            <select id="difficulty">
+                <option value="beginner">Principiante (8x8, 10 minas)</option>
+                <option value="intermediate">Intermedio (12x12, 30 minas)</option>
+                <option value="expert">Experto (16x16, 60 minas)</option>
+                <option value="custom">Personalizado</option>
+            </select>
+            
+            <!-- Configuración personalizada (solo visible cuando se selecciona 'Personalizado') -->
+            <div id="custom-settings" style="display: none;">
+                <input type="number" id="custom-rows" placeholder="Filas" min="5" max="20" title="Número de filas del tablero">
+                <input type="number" id="custom-cols" placeholder="Columnas" min="5" max="30" title="Número de columnas del tablero">
+                <input type="number" id="custom-mines" placeholder="Minas" min="1" title="Número de minas">
+            </div>
+            
+            <button id="new-game">Nuevo Juego</button>
+        </div>
+        
+        <!-- Panel de información del juego -->
+        <div class="game-info">
+            <!-- Contador de minas restantes -->
+            <div class="mines-remaining" title="Minas restantes por marcar">Minas: <span id="mines-count">0</span></div>
+            <!-- Temporizador del juego -->
+            <div class="timer" title="Tiempo transcurrido">Tiempo: <span id="time">0</span>s</div>
+            <!-- Mejor tiempo guardado -->
+            <div class="best-time" title="Mejor tiempo en esta dificultad">Mejor tiempo: <span id="best-time"></span></div>
+        </div>
+        
+        <!-- Contenedor del tablero de juego -->
+        <div class="board" id="board" role="grid" aria-label="Tablero de Buscaminas">
+            <!-- El tablero se generará dinámicamente con JavaScript -->
+            <!-- Cada celda se creará como un elemento div con las clases correspondientes -->
+        </div>
+        
+        <!-- Mensajes del juego (victoria/derrota) -->
+        <div class="message" id="message" role="alert"></div>
+    </div>
+    
+    <!-- Script principal del juego -->
+    <script src="game.js"></script>
+</body>
+</html>

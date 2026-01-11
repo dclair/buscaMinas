@@ -1,0 +1,299 @@
+/* 
+ * ESTILOS GENERALES
+ * Establece los estilos base para todos los elementos
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+}
+
+/* 
+ * DISEÑO RESPONSIVE
+ * Ajustes para pantallas pequeñas
+ */
+body {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* 
+ * CONTENEDOR DEL JUEGO
+ * Estilos para el contenedor principal del juego
+ */
+.game-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* 
+ * TÍTULO DEL JUEGO
+ * Estilos para el título del juego
+ */
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* 
+ * CONTROLES DEL JUEGO
+ * Estilos para los botones, selectores y entradas
+ */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+select,
+input,
+button {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* 
+ * AJUSTES PERSONALIZADOS
+ * Estilos para los ajustes personalizados del juego
+ */
+#custom-settings {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+#custom-settings input {
+  width: 80px;
+}
+
+/* 
+ * INFORMACIÓN DEL JUEGO
+ * Estilos para la información del juego
+ */
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilos cuando se gana el juego */
+body.win .game-info,
+body.win .game-info * {
+  color: #333 !important;
+}
+
+/* 
+ * TABLERO DEL JUEGO
+ * Estilos para el tablero del juego
+ */
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+  gap: 2px;
+  background-color: #bdbdbd;
+  padding: 2px;
+  border: 2px solid #7b7b7b;
+  border-radius: 4px;
+  margin: 0 auto;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* 
+ * CELDAS DEL TABLERO
+ * Estilos base para todas las celdas
+ */
+.cell {
+  aspect-ratio: 1;
+  background-color: #c0c0c0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid;
+  border-color: #fff #7b7b7b #7b7b7b #fff;
+  font-size: 14px;
+  position: relative;
+}
+
+/* 
+ * ESTADOS DE LAS CELDAS
+ * Estilos para los diferentes estados de las celdas
+ */
+
+/* Celda revelada (sin mina) */
+.cell.revealed {
+  background-color: #e0e0e0;
+  border: 1px solid #bdbdbd;
+}
+
+/* Celda con bandera */
+.cell.flagged {
+  background-color: #ffeb3b;
+}
+
+/* Celda con mina (estado normal) */
+.cell.mine {
+  background-color: #ffcce6; /* Fondo rosa claro */
+  position: relative;
+}
+
+/* Estilo para el emoji de la mina */
+.cell.mine::before {
+  content: "💣";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Asegurar que el emoji sea visible cuando se revele la celda */
+
+/* Celda con mina revelada */
+.cell.mine.revealed {
+  background-color: #ff6b9e; /* Fondo rosa más intenso */
+  border: 1px solid #ff3d8b;
+}
+/* Asegurar que el emoji sea visible */
+.cell.mine.revealed::before {
+  color: #333;
+}
+
+/* Celdas con minas adyacentes */
+.cell.adjacent-1 {
+  color: blue;
+}
+.cell.adjacent-2 {
+  color: green;
+}
+.cell.adjacent-3 {
+  color: red;
+}
+.cell.adjacent-4 {
+  color: darkblue;
+}
+.cell.adjacent-5 {
+  color: brown;
+}
+.cell.adjacent-6 {
+  color: teal;
+}
+.cell.adjacent-7 {
+  color: black;
+}
+.cell.adjacent-8 {
+  color: gray;
+}
+
+/* 
+ * MENSAJES DEL JUEGO
+ * Estilos para los mensajes de victoria/derrota
+ */
+.message {
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+/* Mensaje de victoria */
+.win {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Mensaje de derrota */
+.game-over {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Estilo para las celdas con minas cuando se gana el juego */
+body.win .cell.mine {
+  background-color: #a8e6cf !important; /* Verde claro para indicar victoria */
+  position: relative;
+}
+
+/* Emoji de trofeo en las minas cuando se gana */
+body.win .cell.mine::before {
+  content: "🏆" !important; /* Forzar el contenido del emoji */
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #ffd700 !important; /* Dorado para el trofeo */
+  font-size: 1.2em;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Sombra para mejor visibilidad */
+  z-index: 1;
+}
+
+/* 
+ * DISEÑO RESPONSIVE
+ * Ajustes para pantallas pequeñas
+ */
+@media (max-width: 600px) {
+  .cell {
+    font-size: 12px;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .game-info {
+    flex-direction: column;
+    gap: 5px;
+  }
+  /* con esto ocultamos el mejor tiempo cuando no hay valor */
+  .best-time:not(:has(span:not(:empty))) {
+    display: none;
+  }
+}
